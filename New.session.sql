@@ -15,3 +15,9 @@ values
 
 --@block //showing all data
 SELECT * FROM users ;
+
+--@block
+use blog;
+
+--@block
+CREATE TABLE 
