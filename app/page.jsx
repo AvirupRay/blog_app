@@ -3,21 +3,39 @@
 import BlogItem from "@/components/BlogItem";
 import Header from "@/components/Header";
 import axios from "axios";
-import { useState } from "react";
-
-
+import { useEffect, useState } from "react";
 
 
 
 export default function Home() {
 
   const [email, setEmail] = useState("")
+  const [blogs, setBlogs] = useState([]);
+
   const clicked=async()=>{
     const data={email:email}
     await axios.post("/api/newUser",data)
     .then((res)=>console.log(res.body))
     .catch((err)=>console.log(err))
   }
+
+  const items=async()=>{
+    try {
+        const response = await axios.get("/api/uploadBlog");
+        setBlogs(response.data);
+        console.log(response.data); // Use response.data to access the response body
+      } catch (err) {
+        console.error(err); // Use console.error for better error visibility
+      }
+  }
+  
+  useEffect(() => {
+    items()
+  }, [])
+  
+
+
+
   return (
     <>
     <Header/>
@@ -31,7 +49,14 @@ export default function Home() {
       </form>
     </div>
 
-    <BlogItem/>
+
+    {blogs.map((item) => (
+        <div key={item.id} className="flex gap-5 items-center justify-center">
+          <BlogItem title={item.title} desc={item.details} pic={item.image}/>
+        </div>
+    ))}
+    
+    
 
 
     </>
