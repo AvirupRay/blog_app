@@ -55,6 +55,8 @@ export default function Home() {
           <BlogItem title={item.title} desc={item.details} pic={item.image}/>
         </div>
     ))}
+
+    <button className="btn btn-outline btn-secondary">hello moto</button>
     
     
 
