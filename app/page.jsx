@@ -35,7 +35,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div className="h-[100vh]">
       <Header />
 
       <div className="flex flex-col items-center justify-center gap-5">
@@ -96,6 +96,6 @@ export default function Home() {
           <BlogItem title={item.title} desc={item.details} pic={item.image} />
         </div>
       ))}
-    </>
+    </div>
   );
 }
