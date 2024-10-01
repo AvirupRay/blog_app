@@ -50,3 +50,7 @@ MODIFY COLUMN id INT AUTO_INCREMENT;
 
 --@block //showing all data
 SELECT * FROM blogdet;
+
+--@block
+ALTER TABLE blogdet
+MODIFY COLUMN img INT AUTO_INCREMENT;

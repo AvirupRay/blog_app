@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import SwitchBG from "./SwitchBG";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const Header = () => {
   const clicked = async () => {
@@ -12,9 +14,9 @@ const Header = () => {
       <div className=" font-bold font-mono text-2xl select-none">Blog0</div>
       <div className="flex gap-10">
         <SwitchBG />
-        <button onClick={clicked} className="btn btn-outline">
+        <Link href={"/page"} className="btn btn-outline">
           Add Blog
-        </button>
+        </Link>
       </div>
     </div>
   );

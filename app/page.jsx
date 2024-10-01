@@ -36,8 +36,6 @@ export default function Home() {
 
   return (
     <div className="h-[100vh]">
-      <Header />
-
       <div className="flex flex-col items-center justify-center gap-5">
         <h1 className=" text-3xl font-medium">Latest Blogs</h1>
         <p className="mt-5 max-w-[740px] m-auto text-s">
