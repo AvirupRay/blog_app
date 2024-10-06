@@ -22,7 +22,7 @@ export default function Home() {
 
   const items = async () => {
     try {
-      const response = await axios.get("/api/uploadBlog");
+      const response = await axios.get("/api/seeBlog");
       setBlogs(response.data);
       console.log(response.data); // Use response.data to access the response body
     } catch (err) {
