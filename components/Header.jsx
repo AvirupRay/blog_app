@@ -11,7 +11,9 @@ const Header = () => {
 
   return (
     <div className=" flex items-center justify-between px-10 p-5 ">
-      <div className=" font-bold font-mono text-2xl select-none">Blog0</div>
+      <Link href={"/"} className="font-bold font-mono text-2xl select-none">
+        Blog0
+      </Link>
       <div className="flex gap-10">
         <SwitchBG />
         <Link href={"/page/blogUploader"} className="btn btn-outline">

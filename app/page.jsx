@@ -1,7 +1,6 @@
 "use client";
 
 import BlogItem from "@/components/BlogItem";
-import Header from "@/components/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -90,8 +89,11 @@ export default function Home() {
       </div>
 
       {blogs.map((item) => (
-        <div key={item.id} className="flex gap-5 items-center justify-center">
-          <BlogItem title={item.title} desc={item.details} pic={item.image} />
+        <div
+          key={item.id}
+          className="flex gap-5 items-center justify-center flex-row"
+        >
+          <BlogItem title={item.title} desc={item.details} pic={item.img} />
         </div>
       ))}
     </div>
