@@ -11,6 +11,7 @@ function Page() {
   const [email, setEmail] = useState("");
   const [desc, setDesc] = useState("");
   const [error, setError] = useState("");
+  const [succ, setSucc] = useState("");
   // const [image, setImage] = useState(null); // State to store the image file
 
   async function newBlog(e) {
@@ -23,12 +24,19 @@ function Page() {
     };
     await axios
       .post("/api/uploadBlog", formData)
-      .then((res) => console.log(res.body))
+      .then((res) => setSucc("Uploaded"))
       .catch((err) =>
         setError("Error: Please subscribe with your mail before uploading blog")
       );
   }
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSucc(""); // Hide the error message after the timeout
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [succ]);
   useEffect(() => {
     console.log(error);
 
@@ -58,6 +66,24 @@ function Page() {
             />
           </svg>
           <span className=" font-semibold">{error}</span>
+        </div>
+      ) : null}
+      {succ ? (
+        <div role="alert" className="alert alert-success w-1/2 mb-20">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>{succ}</span>
         </div>
       ) : null}
       {/*  */}
@@ -109,7 +135,7 @@ function Page() {
         </label>
         <div className="flex w-full flex-col justify-center items-center border-opacity-50">
           <ImageUploader />
-          <img src={myString} alt="" />
+          <img src={myString} alt="" className="w-1/4" />
         </div>
       </form>
     </div>
