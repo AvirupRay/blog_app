@@ -53,4 +53,12 @@ SELECT * FROM blogdet;
 
 --@block
 ALTER TABLE blogdet
-MODIFY COLUMN img INT AUTO_INCREMENT;
+MODIFY COLUMN img text NOT NULL;
+
+--@block
+ALTER TABLE blogdet
+DROP COLUMN email;
+
+--@block
+DELETE FROM blogdet;
+

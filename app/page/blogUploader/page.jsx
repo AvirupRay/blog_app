@@ -6,7 +6,7 @@ import ImageUploader from "@/components/ImageUploader";
 import useStore from "@/store/store";
 
 function Page() {
-  const { myString } = useStore();
+  const { myString, setString } = useStore();
   const [title, setTitle] = useState("");
   const [email, setEmail] = useState("");
   const [desc, setDesc] = useState("");
@@ -15,7 +15,8 @@ function Page() {
   // const [image, setImage] = useState(null); // State to store the image file
 
   async function newBlog(e) {
-    e.preventDefault(); // Prevent default form submission`
+    e.preventDefault(); // Prevent default form submission
+    if (myString === "") return setError("Please upload an image");
     const formData = {
       email: email,
       title: title,
@@ -24,7 +25,13 @@ function Page() {
     };
     await axios
       .post("/api/uploadBlog", formData)
-      .then((res) => setSucc("Uploaded"))
+      .then((res) => {
+        setSucc("Uploaded");
+        setString("");
+        setTitle("");
+        setDesc("");
+        setEmail("");
+      })
       .catch((err) =>
         setError("Error: Please subscribe with your mail before uploading blog")
       );

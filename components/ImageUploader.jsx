@@ -11,6 +11,7 @@ function ImageUploader() {
   const handleUpload = (result) => {
     // console.log("Uploaded image URL:", imageUrl);
     setString(result.info.secure_url);
+    console.log(result.info.secure_url);
   };
 
   return (
